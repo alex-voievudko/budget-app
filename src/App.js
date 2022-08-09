@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   ChakraProvider,
   Box,
@@ -8,10 +8,15 @@ import {
   Heading,
   Button,
 } from '@chakra-ui/react'
-import { ColorModeSwitcher } from './ColorModeSwitcher'
+// import { ColorModeSwitcher } from './ColorModeSwitcher'
 import BudgetCard from './components/BudgetCard'
+import AddBudgetModal from './components/AddBudgetModal'
+import { useBudget } from './context/BudgetContext'
 
 function App() {
+  const [showAddBudgetModal, setShowAddBudgetModal] = useState(false)
+  const { budgets, getBudgetExpenses } = useBudget()
+
   return (
     <ChakraProvider theme={theme}>
       <Box px={6} my={6} fontSize="xl">
@@ -19,7 +24,11 @@ function App() {
           <Heading mr="auto" as="h1" size="lg">
             Budgets
           </Heading>
-          <Button colorScheme="teal" variant="solid">
+          <Button
+            colorScheme="teal"
+            variant="solid"
+            onClick={() => setShowAddBudgetModal(true)}
+          >
             Add Budget
           </Button>
           <Button colorScheme="teal" variant="outline">
@@ -31,9 +40,27 @@ function App() {
           gap="1rem"
           alignItems="flex-start"
         >
-          <BudgetCard name="Entertainment" amount="800" max="1000"></BudgetCard>
+          {budgets.map(budget => {
+            const amount = getBudgetExpenses(budget.id).reduce(
+              (total, expense) => total + expense.amount,
+              0
+            )
+
+            return (
+              <BudgetCard
+                key={budget.id}
+                name={budget.name}
+                amount={amount}
+                max={budget.max}
+              />
+            )
+          })}
         </Grid>
       </Box>
+      <AddBudgetModal
+        isOpen={showAddBudgetModal}
+        handleClose={() => setShowAddBudgetModal(false)}
+      />
     </ChakraProvider>
   )
 }
