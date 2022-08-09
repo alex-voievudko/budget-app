@@ -8,7 +8,7 @@ const getProgressBarColor = (amount, max) => {
   return 'red'
 }
 
-const BudgetCard = ({ name, amount, max }) => {
+const BudgetCard = ({ name, amount, max, onAddExpenseClick }) => {
   return (
     <Box p={6} w="full" boxShadow="md" borderWidth={1}>
       <Stack
@@ -34,7 +34,12 @@ const BudgetCard = ({ name, amount, max }) => {
         value={amount}
       />
       <Stack direction="row" gap="2" mt="4">
-        <Button colorScheme="teal" variant="outline" ms="auto">
+        <Button
+          colorScheme="teal"
+          variant="outline"
+          ms="auto"
+          onClick={onAddExpenseClick}
+        >
           Add Expense
         </Button>
         <Button variant="outline">View Expenses</Button>

@@ -9,13 +9,21 @@ import {
   Button,
 } from '@chakra-ui/react'
 // import { ColorModeSwitcher } from './ColorModeSwitcher'
+import { useBudget } from './context/BudgetContext'
 import BudgetCard from './components/BudgetCard'
 import AddBudgetModal from './components/AddBudgetModal'
-import { useBudget } from './context/BudgetContext'
+import AddExpenseModal from './components/AddExpenseModal'
 
 function App() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false)
+  const [showAddExpenseModal, setShowAddExpenseModal] = useState(false)
+  const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState()
   const { budgets, getBudgetExpenses } = useBudget()
+
+  const openAddExpenseModal = budgetId => {
+    setShowAddExpenseModal(true)
+    setAddExpenseModalBudgetId(budgetId)
+  }
 
   return (
     <ChakraProvider theme={theme}>
@@ -31,7 +39,11 @@ function App() {
           >
             Add Budget
           </Button>
-          <Button colorScheme="teal" variant="outline">
+          <Button
+            colorScheme="teal"
+            variant="outline"
+            onClick={openAddExpenseModal}
+          >
             Add Expense
           </Button>
         </HStack>
@@ -52,6 +64,7 @@ function App() {
                 name={budget.name}
                 amount={amount}
                 max={budget.max}
+                onAddExpenseClick={() => openAddExpenseModal(budget.id)}
               />
             )
           })}
@@ -60,6 +73,11 @@ function App() {
       <AddBudgetModal
         isOpen={showAddBudgetModal}
         handleClose={() => setShowAddBudgetModal(false)}
+      />
+      <AddExpenseModal
+        isOpen={showAddExpenseModal}
+        defaultBudgetId={addExpenseModalBudgetId}
+        handleClose={() => setShowAddExpenseModal(false)}
       />
     </ChakraProvider>
   )

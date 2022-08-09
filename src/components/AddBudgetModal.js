@@ -10,6 +10,11 @@ import {
   FormControl,
   FormLabel,
   Input,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
 } from '@chakra-ui/react'
 import { useRef } from 'react'
 import { useBudget } from '../context/BudgetContext'
@@ -31,10 +36,12 @@ const AddBudgetModal = ({ isOpen, handleClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={handleClose}>
       <ModalOverlay />
-      <form onSubmit={handleSubmit}>
-        <ModalContent>
+
+      <ModalContent>
+        <form onSubmit={handleSubmit}>
           <ModalHeader>New Budget</ModalHeader>
           <ModalCloseButton />
+
           <ModalBody>
             <FormControl isRequired mb="3">
               <FormLabel>Name</FormLabel>
@@ -43,7 +50,18 @@ const AddBudgetModal = ({ isOpen, handleClose }) => {
 
             <FormControl isRequired>
               <FormLabel>Maximum Spending</FormLabel>
-              <Input ref={maxRef} type="number" focusBorderColor="teal.500" />
+              <NumberInput
+                step={0.01}
+                defaultValue={0}
+                min={0}
+                focusBorderColor="teal.500"
+              >
+                <NumberInputField ref={maxRef} />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
             </FormControl>
           </ModalBody>
 
@@ -52,8 +70,8 @@ const AddBudgetModal = ({ isOpen, handleClose }) => {
               Add
             </Button>
           </ModalFooter>
-        </ModalContent>
-      </form>
+        </form>
+      </ModalContent>
     </Modal>
   )
 }
