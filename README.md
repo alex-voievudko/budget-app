@@ -1,3 +1,9 @@
+# Simple Budget App
+
+This is a simple budget app that allows to create different kind of budget categories and track your expenses.
+## Demo
+[View Demo Here](https://alex-voievudko.github.io/budget-app/)
+## Screenshots
 ![App Screenshot](https://raw.githubusercontent.com/alex-voievudko/budget-app/main/screenshots/budget-app-screenshot.png)
 ## Tech Stack
 The App is created using the following technology and approach:
@@ -27,3 +33,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
     
 ## 🔗 Links
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alex-voievudko/)
+    
+
