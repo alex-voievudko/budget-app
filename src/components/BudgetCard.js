@@ -8,7 +8,14 @@ const getProgressBarColor = (amount, max) => {
   return 'red'
 }
 
-const BudgetCard = ({ name, amount, max, onAddExpenseClick }) => {
+const BudgetCard = ({
+  name,
+  amount,
+  max,
+  hideButtons,
+  onAddExpenseClick,
+  onViewExpenseClick,
+}) => {
   return (
     <Box p={6} w="full" boxShadow="md" borderWidth={1}>
       <Stack
@@ -21,29 +28,37 @@ const BudgetCard = ({ name, amount, max, onAddExpenseClick }) => {
           {name}
         </Heading>
         <Text fontSize="md" display="flex" alignItems="baseline">
-          {currencyFormatter.format(amount)} /
-          <Text as="span" fontSize="sm" color="gray.600" ms={1}>
-            {currencyFormatter.format(max)}
-          </Text>
+          {currencyFormatter.format(amount)}
+          {max && (
+            <Text as="span" fontSize="sm" color="gray.600" ms={1}>
+              / {currencyFormatter.format(max)}
+            </Text>
+          )}
         </Text>
       </Stack>
-      <Progress
-        colorScheme={getProgressBarColor(amount, max)}
-        min={0}
-        max={max}
-        value={amount}
-      />
-      <Stack direction="row" gap="2" mt="4">
-        <Button
-          colorScheme="teal"
-          variant="outline"
-          ms="auto"
-          onClick={onAddExpenseClick}
-        >
-          Add Expense
-        </Button>
-        <Button variant="outline">View Expenses</Button>
-      </Stack>
+      {max && (
+        <Progress
+          colorScheme={getProgressBarColor(amount, max)}
+          min={0}
+          max={max}
+          value={amount}
+        />
+      )}
+      {!hideButtons && (
+        <Stack direction="row" gap="2" mt="4">
+          <Button
+            colorScheme="teal"
+            variant="outline"
+            ms="auto"
+            onClick={onAddExpenseClick}
+          >
+            Add Expense
+          </Button>
+          <Button variant="outline" onClick={onViewExpenseClick}>
+            View Expenses
+          </Button>
+        </Stack>
+      )}
     </Box>
   )
 }

@@ -29,7 +29,7 @@ const AddExpenseModal = ({ isOpen, handleClose, defaultBudgetId }) => {
   const handleSubmit = e => {
     e.preventDefault()
     addExpense({
-      desctiption: descriptionRef.current.value,
+      description: descriptionRef.current.value,
       amount: parseFloat(amountRef.current.value),
       budgetId: budgetIdRef.current.value,
     })

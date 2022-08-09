@@ -18,9 +18,9 @@ export const BudgetProvider = ({ children }) => {
     return expenses.filter(expense => expense.budgetId === budgetId)
   }
 
-  const addExpense = ({ discription, amount, budgetId }) => {
+  const addExpense = ({ description, amount, budgetId }) => {
     setExpenses(prevExpenses => {
-      return [...prevExpenses, { id: uuidv4(), discription, amount, budgetId }]
+      return [...prevExpenses, { id: uuidv4(), description, amount, budgetId }]
     })
   }
 
@@ -34,7 +34,14 @@ export const BudgetProvider = ({ children }) => {
   }
 
   const deleteBudget = ({ id }) => {
-    // TODO: Deal with expenses
+    console.log(`BUDGET: ${id}`)
+    setExpenses(prevExpenses => {
+      return prevExpenses.map(expense => {
+        if (expense.budgetId !== id) return expense
+        return { ...expense, budgetId: UNCATEGORIZED_BUDGET_ID }
+      })
+    })
+
     setBudgets(prevBudgets => {
       return prevBudgets.filter(budget => budget.id !== id)
     })
