@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import {
   ChakraProvider,
+  theme,
   Box,
   Grid,
-  theme,
   HStack,
   Heading,
   Button,
