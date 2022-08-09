@@ -1,12 +1,12 @@
-import { Box, Heading, Stack, Text, Progress, Button } from '@chakra-ui/react';
-import { currencyFormatter } from '../utils/currencyFormatter';
+import { Box, Heading, Stack, Text, Progress, Button } from '@chakra-ui/react'
+import { currencyFormatter } from '../utils/currencyFormatter'
 
 const getProgressBarColor = (amount, max) => {
-  const ratio = amount / max;
-  if (ratio < 0.5) return 'teal';
-  if (ratio < 0.75) return 'yellow';
-  return 'red';
-};
+  const ratio = amount / max
+  if (ratio < 0.5) return 'teal'
+  if (ratio < 0.75) return 'yellow'
+  return 'red'
+}
 
 const BudgetCard = ({ name, amount, max }) => {
   return (
@@ -40,7 +40,7 @@ const BudgetCard = ({ name, amount, max }) => {
         <Button variant="outline">View Expenses</Button>
       </Stack>
     </Box>
-  );
-};
+  )
+}
 
-export default BudgetCard;
+export default BudgetCard

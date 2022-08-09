@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   ChakraProvider,
   Box,
@@ -7,9 +7,9 @@ import {
   HStack,
   Heading,
   Button,
-} from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import BudgetCard from './components/BudgetCard';
+} from '@chakra-ui/react'
+import { ColorModeSwitcher } from './ColorModeSwitcher'
+import BudgetCard from './components/BudgetCard'
 
 function App() {
   return (
@@ -35,10 +35,10 @@ function App() {
         </Grid>
       </Box>
     </ChakraProvider>
-  );
+  )
 }
 
-export default App;
+export default App
 
 {
   /* <Grid minH="100vh" p={3}>
