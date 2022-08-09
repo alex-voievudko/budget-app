@@ -8,7 +8,6 @@ import {
   Heading,
   Button,
 } from '@chakra-ui/react'
-// import { ColorModeSwitcher } from './ColorModeSwitcher'
 import { UNCATEGORIZED_BUDGET_ID, useBudget } from './context/BudgetContext'
 import BudgetCard from './components/BudgetCard'
 import AddBudgetModal from './components/AddBudgetModal'
@@ -102,12 +101,3 @@ function App() {
 }
 
 export default App
-
-{
-  /* <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <HStack spacing="2" mb="4">
-            <Heading>Budgets</Heading>
-          </HStack>
-        </Grid> */
-}

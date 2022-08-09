@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import {
   Button,
   Modal,
@@ -16,7 +17,6 @@ import {
   NumberIncrementStepper,
   NumberDecrementStepper,
 } from '@chakra-ui/react'
-import { useRef } from 'react'
 import { useBudget } from '../context/BudgetContext'
 
 const AddBudgetModal = ({ isOpen, handleClose }) => {
@@ -41,13 +41,11 @@ const AddBudgetModal = ({ isOpen, handleClose }) => {
         <form onSubmit={handleSubmit}>
           <ModalHeader>New Budget</ModalHeader>
           <ModalCloseButton />
-
           <ModalBody>
             <FormControl isRequired mb="3">
               <FormLabel>Name</FormLabel>
               <Input ref={nameRef} type="text" focusBorderColor="teal.500" />
             </FormControl>
-
             <FormControl isRequired>
               <FormLabel>Maximum Spending</FormLabel>
               <NumberInput
@@ -64,7 +62,6 @@ const AddBudgetModal = ({ isOpen, handleClose }) => {
               </NumberInput>
             </FormControl>
           </ModalBody>
-
           <ModalFooter>
             <Button type="submit" colorScheme="teal">
               Add

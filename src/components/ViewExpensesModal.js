@@ -1,3 +1,4 @@
+import { RiCloseLine } from 'react-icons/ri'
 import {
   Button,
   Heading,
@@ -11,7 +12,6 @@ import {
   Stack,
   Text,
 } from '@chakra-ui/react'
-import { RiCloseLine } from 'react-icons/ri'
 import { UNCATEGORIZED_BUDGET_ID, useBudget } from '../context/BudgetContext'
 import { currencyFormatter } from '../utils/currencyFormatter'
 
@@ -52,7 +52,6 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
           </Stack>
         </ModalHeader>
         <ModalCloseButton />
-
         <ModalBody>
           <Stack direction="column" gap="3">
             {expenses.map(expense => (
@@ -79,7 +78,6 @@ const ViewExpensesModal = ({ budgetId, handleClose }) => {
             ))}
           </Stack>
         </ModalBody>
-
         <ModalFooter></ModalFooter>
       </ModalContent>
     </Modal>

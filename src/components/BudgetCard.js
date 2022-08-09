@@ -1,6 +1,7 @@
 import { Box, Heading, Stack, Text, Progress, Button } from '@chakra-ui/react'
 import { currencyFormatter } from '../utils/currencyFormatter'
 
+// Custom function to calculate progress bar color
 const getProgressBarColor = (amount, max) => {
   const ratio = amount / max
   if (ratio < 0.5) return 'teal'

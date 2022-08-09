@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import {
   Button,
   Modal,
@@ -17,7 +18,6 @@ import {
   NumberDecrementStepper,
   Select,
 } from '@chakra-ui/react'
-import { useRef } from 'react'
 import { UNCATEGORIZED_BUDGET_ID, useBudget } from '../context/BudgetContext'
 
 const AddExpenseModal = ({ isOpen, handleClose, defaultBudgetId }) => {
@@ -52,7 +52,6 @@ const AddExpenseModal = ({ isOpen, handleClose, defaultBudgetId }) => {
                 focusBorderColor="teal.500"
               />
             </FormControl>
-
             <FormControl isRequired mb="3">
               <FormLabel>Amount</FormLabel>
               <NumberInput
@@ -68,7 +67,6 @@ const AddExpenseModal = ({ isOpen, handleClose, defaultBudgetId }) => {
                 </NumberInputStepper>
               </NumberInput>
             </FormControl>
-
             <FormControl isRequired>
               <FormLabel>Budget</FormLabel>
               <Select
@@ -85,7 +83,6 @@ const AddExpenseModal = ({ isOpen, handleClose, defaultBudgetId }) => {
               </Select>
             </FormControl>
           </ModalBody>
-
           <ModalFooter>
             <Button type="submit" colorScheme="teal">
               Add
